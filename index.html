@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VKU Field Survey</title>
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#0f766e" />
+    <link rel="stylesheet" href="/style.css" />
+    <!-- ĐÃ XÓA thẻ script assets/index-... thừa ở đây -->
+  </head>
+
+  <body>
+    <main class="app">
+      <!-- HEADER -->
+      <header>
+        <img src="/icons/icon-192.png" alt="VKU Survey" class="app-logo" />
+        <p class="eyebrow">WEEK 5 — OFFLINE-FIRST 1.0</p>
+        <h1>VKU Field Survey</h1>
+        <p id="network-status" class="status">Trạng thái: OFFLINE</p>
+        <p class="status">
+          Platform:
+          <strong id="platform-status"> Android / Capacitor </strong>
+        </p>
+      </header>
+
+      <!-- SURVEY FORM -->
+      <section class="panel">
+        <h2 id="form-title"></h2>
+        <form id="survey-form"></form>
+      </section>
+
+      <!-- NATIVE EVIDENCE -->
+      <section class="panel">
+        <div class="section-header">
+          <h2>Native Evidence</h2>
+        </div>
+
+        <!-- CAMERA -->
+        <div class="evidence-card">
+          <h3>📷 Ảnh hiện trường</h3>
+          <button id="camera-button" type="button">Chụp ảnh hiện trường</button>
+          <button
+            id="clear-photo-button"
+            type="button"
+            class="button-secondary"
+          >
+            Xóa ảnh
+          </button>
+          <p id="photo-status">Chưa có ảnh.</p>
+          <img
+            id="photo-preview"
+            class="submission-photo"
+            alt="Ảnh hiện trường"
+            hidden
+          />
+        </div>
+
+        <!-- GEOLOCATION -->
+        <div class="evidence-card">
+          <h3>📍 Vị trí hiện tại</h3>
+          <button id="location-button" type="button">
+            Lấy vị trí hiện tại
+          </button>
+          <p id="location-status">Chưa có vị trí.</p>
+          <p id="location-coordinates" class="native-value" hidden></p>
+          <p id="location-accuracy" class="native-value" hidden></p>
+        </div>
+      </section>
+
+      <!-- SUBMISSIONS -->
+      <section class="panel">
+        <div class="section-header">
+          <h2>Submissions trên thiết bị</h2>
+          <div id="sync-counters" class="counters">
+            <span id="pending-counter"> Pending: 0 </span>
+            <span id="synced-counter"> Synced: 0 </span>
+          </div>
+          <button id="sync-button" type="button">Sync pending</button>
+        </div>
+        <div id="submission-list"></div>
+      </section>
+    </main>
+
+    <!-- Đã sửa thành ./app.js để Vite nhận diện đúng file gốc -->
+    <script type="module" src="./public/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,897 @@
+/* =========================================================
+   VKU FIELD SURVEY — PREMIUM COMPACT UI
+   Modern University / Offline-First Dashboard
+   ========================================================= */
+
+:root {
+  --primary: #0f766e;
+  --primary-2: #14b8a6;
+  --primary-dark: #115e59;
+  --primary-soft: #ccfbf1;
+
+  --blue: #2563eb;
+  --blue-soft: #dbeafe;
+
+  --green: #16a34a;
+  --green-soft: #dcfce7;
+
+  --orange: #d97706;
+  --orange-soft: #fef3c7;
+
+  --red: #dc2626;
+  --red-soft: #fee2e2;
+
+  --text: #0f172a;
+  --text-2: #334155;
+  --text-3: #64748b;
+  --text-4: #94a3b8;
+
+  --border: #d7dee7;
+  --border-2: #b8c3d1;
+
+  --background: #f1f5f9;
+  --surface: #ffffff;
+  --surface-soft: #f8fafc;
+
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 22px;
+
+  --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.07);
+  --shadow-lg: 0 16px 40px rgba(15, 23, 42, 0.09);
+
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  color: var(--text);
+  background: var(--background);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+/* =========================================================
+   RESET & GLOBAL MEDIA CONTROL (SỬA LỖI HÌNH SIÊU LỚN)
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 0% 0%, rgba(20, 184, 166, 0.15), transparent 30%),
+    radial-gradient(
+      circle at 100% 10%,
+      rgba(37, 99, 235, 0.07),
+      transparent 25%
+    ),
+    linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+}
+
+/* Khống chế kích thước tối đa cho toàn bộ thẻ img */
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  border: 0;
+}
+
+/* =========================================================
+   APP CONTAINER
+   ========================================================= */
+
+.app {
+  width: min(900px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 42px 0 65px;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+header {
+  position: relative;
+  text-align: center;
+  margin-bottom: 27px;
+}
+
+.app-logo {
+  width: 78px;
+  height: 78px;
+  display: block;
+  object-fit: contain;
+  margin: 0 auto 13px;
+  padding: 5px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow:
+    0 12px 28px rgba(15, 118, 110, 0.13),
+    0 4px 10px rgba(15, 23, 42, 0.05);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.app-logo:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 18px 36px rgba(15, 118, 110, 0.17),
+    0 6px 14px rgba(15, 23, 42, 0.07);
+}
+
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 7px;
+  padding: 6px 11px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ccfbf1, #e6fffb);
+  border: 1px solid #99f6e4;
+  color: var(--primary);
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  box-shadow: 0 3px 10px rgba(15, 118, 110, 0.05);
+}
+
+/* =========================================================
+   MAIN TITLE
+   ========================================================= */
+
+header h1 {
+  margin: 0;
+  font-size: clamp(32px, 5vw, 46px);
+  line-height: 1.05;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  background: linear-gradient(135deg, #0f172a 10%, #0f766e 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* =========================================================
+   NETWORK STATUS
+   ========================================================= */
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 13px;
+  padding: 7px 13px;
+  border: 1px solid #dbe4ea;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text-2);
+  font-size: 12px;
+  font-weight: 750;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+  backdrop-filter: blur(10px);
+}
+
+.status::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.12);
+  animation: pulse-status 2s infinite;
+}
+
+@keyframes pulse-status {
+  0% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.25);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(34, 197, 94, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+  }
+}
+
+/* =========================================================
+   PANELS
+   ========================================================= */
+
+.panel {
+  position: relative;
+  margin-top: 18px;
+  padding: 24px;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: var(--radius-xl);
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(248, 250, 252, 0.97)
+  );
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+.panel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #0f766e, #14b8a6, #2dd4bf);
+  opacity: 0.9;
+}
+
+.panel h2 {
+  margin-bottom: 20px;
+  color: var(--text);
+  font-size: 20px;
+  line-height: 1.3;
+  font-weight: 850;
+  letter-spacing: -0.025em;
+}
+
+/* =========================================================
+   NATIVE EVIDENCE CARDS & PHOTOS (BỔ SUNG CHO HTML)
+   ========================================================= */
+
+.evidence-card {
+  margin-top: 14px;
+  padding: 16px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface-soft);
+}
+
+.evidence-card h3 {
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--text-2);
+}
+
+.evidence-card p {
+  font-size: 12px;
+  color: var(--text-3);
+  margin-top: 8px;
+}
+
+/* Giới hạn kích thước ảnh xem trước / ảnh minh chứng */
+.submission-photo {
+  width: 100%;
+  max-width: 360px;
+  max-height: 240px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--border-2);
+  margin-top: 10px;
+  box-shadow: var(--shadow-sm);
+}
+
+.native-value {
+  margin-top: 6px;
+  padding: 6px 10px;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 11px;
+  color: var(--text-2);
+  word-break: break-all;
+}
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.field {
+  margin-bottom: 14px;
+  animation: field-enter 0.3s ease both;
+}
+
+@keyframes field-enter {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.field > label,
+.field > .field-label {
+  display: block;
+  margin-bottom: 5px;
+  color: #1e293b;
+  font-size: 13px;
+  line-height: 1.35;
+  font-weight: 800;
+}
+
+.field input[type="text"],
+.field textarea {
+  display: block;
+  width: 100%;
+  border: 1.5px solid var(--border-2);
+  border-radius: var(--radius-md);
+  outline: none;
+  background: #ffffff;
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.5;
+  transition:
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease;
+}
+
+.field input[type="text"] {
+  height: 43px;
+  padding: 0 12px;
+}
+
+.field textarea {
+  min-height: 100px;
+  padding: 10px 12px;
+  resize: vertical;
+}
+
+.field input[type="text"]::placeholder,
+.field textarea::placeholder {
+  color: #9aa6b5;
+  opacity: 1;
+}
+
+.field input[type="text"]:hover,
+.field textarea:hover {
+  border-color: #94a3b8;
+  background: #ffffff;
+}
+
+.field input[type="text"]:focus,
+.field textarea:focus {
+  border-color: var(--primary);
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.11);
+}
+
+/* =========================================================
+   RADIO GROUP
+   ========================================================= */
+
+.radio-option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 42px;
+  margin: 5px 0;
+  padding: 8px 11px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  background: #ffffff;
+  color: var(--text-2);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    border-color 0.18s ease,
+    background 0.18s ease,
+    transform 0.15s ease,
+    box-shadow 0.18s ease;
+}
+
+.radio-option:hover {
+  border-color: #5eead4;
+  background: #f0fdfa;
+  transform: translateX(2px);
+  box-shadow: 0 4px 10px rgba(15, 118, 110, 0.05);
+}
+
+.radio-option:has(input:checked) {
+  border-color: var(--primary);
+  background: linear-gradient(135deg, #f0fdfa, #ccfbf1);
+  color: var(--primary-dark);
+  font-weight: 800;
+  box-shadow: 0 4px 12px rgba(15, 118, 110, 0.08);
+}
+
+.radio-option input[type="radio"] {
+  width: 17px;
+  height: 17px;
+  margin: 0;
+  flex-shrink: 0;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 18px;
+  padding-top: 15px;
+  border-top: 1px solid var(--border);
+}
+
+button {
+  min-height: 42px;
+  padding: 0 17px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  background: var(--primary);
+  color: #ffffff;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease,
+    opacity 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+button[type="submit"] {
+  position: relative;
+  min-width: 135px;
+  background: linear-gradient(135deg, #0f766e, #0d9488);
+  color: #ffffff;
+  box-shadow: 0 6px 14px rgba(15, 118, 110, 0.2);
+}
+
+button[type="submit"]::after {
+  content: " →";
+  font-size: 15px;
+}
+
+button[type="submit"]:hover {
+  background: linear-gradient(135deg, #0b5f59, #0f766e);
+  box-shadow: 0 8px 18px rgba(15, 118, 110, 0.25);
+}
+
+/* Button Phụ cho Native Evidence (Xóa ảnh, etc) */
+.button-secondary {
+  background: #f1f5f9;
+  color: var(--text-2);
+  border: 1px solid var(--border-2);
+
+  margin-left: 6px;
+}
+
+.button-secondary:hover {
+  background: #e2e8f0;
+  color: var(--text);
+}
+
+/* =========================================================
+   SUBMISSION HEADER & LIST
+   ========================================================= */
+
+.section-header {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.section-header h2 {
+  margin: 0;
+}
+
+.counters {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.counters span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 29px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 850;
+  white-space: nowrap;
+}
+
+#pending-counter {
+  background: var(--orange-soft);
+  color: #92400e;
+  border: 1px solid #fde68a;
+}
+
+#synced-counter {
+  background: var(--green-soft);
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+
+#sync-button {
+  min-height: 38px;
+  padding: 0 13px;
+  border: 1px solid #99f6e4;
+  border-radius: 9px;
+  background: linear-gradient(135deg, #f0fdfa, #ccfbf1);
+  color: var(--primary-dark);
+  font-size: 12px;
+  box-shadow: 0 3px 10px rgba(15, 118, 110, 0.06);
+}
+
+#sync-button::before {
+  content: "↻ ";
+  font-size: 15px;
+}
+
+#sync-button:hover {
+  background: linear-gradient(135deg, #ccfbf1, #99f6e4);
+  box-shadow: 0 5px 14px rgba(15, 118, 110, 0.1);
+}
+
+#submission-list {
+  margin-top: 12px;
+}
+
+#submission-list:empty {
+  display: none;
+}
+
+/* Thẻ submission đơn lẻ */
+.submission {
+  position: relative;
+  margin-top: 8px;
+  padding: 14px 15px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: linear-gradient(135deg, #ffffff, #f8fafc);
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.submission:hover {
+  transform: translateY(-1px);
+  border-color: #cbd5e1;
+  box-shadow: 0 7px 18px rgba(15, 23, 42, 0.06);
+}
+
+.submission strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.submission p {
+  margin: 0 0 8px;
+  color: var(--text-3);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.submission code {
+  display: inline-block;
+  max-width: 100%;
+  padding: 3px 6px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: #f1f5f9;
+  color: #475569;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 9px;
+  word-break: break-all;
+}
+
+/* Bổ sung hiển thị ảnh trong thẻ Submission */
+.submission .submission-photo {
+  max-width: 100%;
+  max-height: 180px;
+  margin-bottom: 8px;
+}
+
+/* Badge trạng thái */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: var(--orange-soft);
+  border: 1px solid #fde68a;
+  color: #92400e;
+  font-size: 9px;
+  font-weight: 850;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.badge::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #f59e0b;
+}
+
+.submission:has(.badge) {
+  border-left: 3px solid #f59e0b;
+}
+
+.submission:has(.badge):hover {
+  border-left-color: #d97706;
+}
+
+#submission-list:empty::after {
+  content: "Chưa có submission nào trên thiết bị.";
+  display: block;
+  padding: 20px;
+  border: 1px dashed #cbd5e1;
+  border-radius: 12px;
+  background: #f8fafc;
+  color: #94a3b8;
+  font-size: 12px;
+  text-align: center;
+}
+
+/* =========================================================
+   SCROLLBAR & MEDIA QUERIES
+   ========================================================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 999px;
+  border: 2px solid #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+@media (max-width: 800px) {
+  .app {
+    width: min(100% - 24px, 700px);
+    padding-top: 35px;
+  }
+
+  .panel {
+    padding: 22px;
+  }
+
+  .section-header {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+  }
+
+  #sync-button {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .counters {
+    grid-column: 1;
+    grid-row: 2;
+  }
+}
+
+@media (max-width: 640px) {
+  .app {
+    width: calc(100% - 18px);
+    padding: 24px 0 40px;
+  }
+
+  header {
+    margin-bottom: 21px;
+  }
+
+  .app-logo {
+    width: 66px;
+    height: 66px;
+    border-radius: 17px;
+    margin-bottom: 10px;
+  }
+
+  .eyebrow {
+    font-size: 8px;
+    padding: 5px 8px;
+  }
+
+  header h1 {
+    font-size: 31px;
+    letter-spacing: -0.04em;
+  }
+
+  .status {
+    margin-top: 11px;
+    font-size: 11px;
+    padding: 6px 10px;
+  }
+
+  .panel {
+    margin-top: 15px;
+    padding: 17px;
+    border-radius: 16px;
+  }
+
+  .panel h2 {
+    margin-bottom: 17px;
+    font-size: 18px;
+  }
+
+  .submission-photo {
+    max-width: 100%;
+    max-height: 200px;
+  }
+
+  .field {
+    margin-bottom: 12px;
+  }
+
+  .field > label,
+  .field > .field-label {
+    margin-bottom: 5px;
+    font-size: 12px;
+  }
+
+  .field input[type="text"] {
+    height: 42px;
+    padding: 0 11px;
+    font-size: 13px;
+  }
+
+  .field textarea {
+    min-height: 92px;
+    padding: 9px 11px;
+    font-size: 13px;
+  }
+
+  .radio-option {
+    min-height: 40px;
+    margin: 4px 0;
+    padding: 7px 10px;
+    font-size: 12px;
+  }
+
+  .radio-option input[type="radio"] {
+    width: 16px;
+    height: 16px;
+  }
+
+  .actions {
+    justify-content: stretch;
+    margin-top: 15px;
+    padding-top: 13px;
+  }
+
+  button[type="submit"] {
+    width: 100%;
+    min-height: 44px;
+  }
+
+  .section-header {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 9px;
+  }
+
+  .section-header h2 {
+    margin-bottom: 0;
+  }
+
+  .counters {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  #sync-button {
+    width: 100%;
+    min-height: 42px;
+  }
+
+  .submission {
+    padding: 13px;
+  }
+}
+
+@media (max-width: 380px) {
+  .app {
+    width: calc(100% - 12px);
+    padding-top: 18px;
+  }
+
+  .panel {
+    padding: 14px;
+  }
+
+  header h1 {
+    font-size: 28px;
+  }
+
+  .panel h2 {
+    font-size: 17px;
+  }
+
+  .field {
+    margin-bottom: 11px;
+  }
+
+  .counters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .counters span {
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

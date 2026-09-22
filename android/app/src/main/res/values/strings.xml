@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">lab5-hoangphanha</string>
+    <string name="title_activity_main">lab5-hoangphanha</string>
+    <string name="package_name">vn.vku.hoangphanha</string>
+    <string name="custom_url_scheme">vn.vku.hoangphanha</string>
+</resources>
